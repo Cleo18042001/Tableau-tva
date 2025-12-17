@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tableau TVA</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="p-6">
+
+    <h1 class="text-center text-3xl font-bold mb-6">Tableau TVA</h1>
+
+    <div class="flex justify-center gap-4 mb-8">
+        <button id="addRow" class="px-4 py-2 bg-black text-white rounded">Ajouter une ligne</button>
+        <button id="deleteRow" class="px-4 py-2 bg-red-500 text-white rounded">Supprimer la dernière ligne</button>
+        <button id="eraseAll" class="px-4 py-2 bg-yellow-500 text-white rounded">Effacer tous les champs</button>
+
+        
+        <button id="exportJSON" class="px-4 py-2 bg-blue-600 text-white rounded">Exporter JSON</button>
+        <button id="importJSON" class="px-4 py-2 bg-purple-600 text-white rounded">Importer JSON</button>
+        <input type="file" id="fileInput" accept=".json" style="display:none;">
+    </div>
+
+    <table id="tvaTable" class="mx-auto border-collapse border border-black">
+        <thead>
+            <tr class="text-center">
+                <th class="border border-black px-8 py-3 font-semibold">Libellé</th>
+                <th class="border border-black px-8 py-3 font-semibold">Prix HT</th>
+                <th class="border border-black px-8 py-3 font-semibold">TVA</th>
+                <th class="border border-black px-8 py-3 font-semibold">Prix TTC</th>
+                <th class="border border-black px-8 py-3 font-semibold">Calculer</th>
+                <th class="border border-black px-8 py-3 font-semibold">Effacer</th>
+                <th class="border border-black px-8 py-3 font-semibold">Supprimer</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="text-center">
+                <td class="border border-black px-4 py-2">
+                    <input type="text" class="libelle border p-1 w-40 text-center" placeholder="Libellé">
+                </td>
+                <td class="border border-black px-4 py-2">
+                    <input type="number" class="prixHT border p-1 w-40 text-center" placeholder="Prix HT">
+                </td>
+                <td class="border border-black px-4 py-2">
+                    <select class="tvaSelect border p-1 w-24 text-center">
+                        <option value="">Choisir TVA</option>
+                        <option value="20">20%</option>
+                        <option value="10">10%</option>
+                        <option value="5.5">5.5%</option>
+                    </select>
+                </td>
+                <td class="border border-black px-4 py-2">
+                    <input type="number" class="prixTTC border p-1 w-40 text-center" placeholder="Prix TTC" readonly>
+                </td>
+                <td class="border border-black px-4 py-2">
+                    <button class="px-3 py-1 bg-green-600 text-white rounded calculateBtn">Calculer</button>
+                </td>
+                <td class="border border-black px-4 py-2">
+                    <button class="px-3 py-1 bg-yellow-500 text-black rounded eraseBtn">Effacer</button>
+                </td>
+                <td class="border border-black px-4 py-2">
+                    <button class="px-3 py-1 bg-red-600 text-white rounded deleteBtn">Supprimer</button>
+                </td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr class="text-center font-bold">
+                <td class="border border-black px-4 py-2"></td>
+                <td class="border border-black px-4 py-2"></td>
+                <td class="border border-black px-4 py-2">Total TTC</td>
+                <td class="border border-black px-4 py-2" id="totalTTC">0.00</td>
+                <td class="border border-black px-4 py-2"></td>
+                <td class="border border-black px-4 py-2"></td>
+                <td class="border border-black px-4 py-2"></td>
+            </tr>
+        </tfoot>
+    </table>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
+
+
+
+
+
